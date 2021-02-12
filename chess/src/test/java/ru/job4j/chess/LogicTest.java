@@ -22,7 +22,17 @@ public class LogicTest {
         throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.C1));
-        logic.add(new BishopBlack(Cell.G5));
-            logic.move(Cell.C1, Cell.G5);
+        logic.add(new BishopBlack(Cell.D2));
+        logic.move(Cell.C1, Cell.D2);
     }
+
+    @Test
+    public void whenMoveThenWay()
+        throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
+            Logic logic = new Logic();
+           logic.add(new BishopBlack(Cell.C1));
+           logic.add(new BishopBlack(Cell.G5));
+           logic.move(Cell.C1, Cell.F4);
+
+        }
 }

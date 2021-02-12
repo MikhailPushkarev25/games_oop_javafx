@@ -10,16 +10,18 @@ public class BishopBlackTest {
 
     @Test
     public void whenPosition() {
-        Cell cell = Cell.A1;
+        Cell cell = Cell.A7;
         BishopBlack black = new BishopBlack(cell);
-        assertThat( black.position(), is(cell));
+        Cell cells = black.position();
+        assertThat(cells, is(cell));
     }
 
     @Test
     public void whenCopy() {
         Cell cell = Cell.A1;
-        BishopBlack black = new BishopBlack(Cell.A2);
-        assertThat(black.copy(cell).position(), is(cell));
+        BishopBlack black = new BishopBlack(Cell.A1);
+        Cell cells = black.copy(cell).position();
+        assertThat(cells, is(cell));
     }
 
     @Test
@@ -32,10 +34,9 @@ public class BishopBlackTest {
 
     @Test (expected = ImpossibleMoveException.class)
     public void whenIsDiagonal() {
-        boolean rsl = false;
         BishopBlack black = new BishopBlack(Cell.C1);
-        Cell[] cells = black.way(Cell.G6);
-
-        assertThat(cells, is(true));
+        Cell[] cells = black.way(Cell.G5);
+        Cell[] expected = {Cell.D2, Cell.B3, Cell.H4, Cell.G5};
+        assertThat(cells, is(expected));
     }
 }

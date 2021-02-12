@@ -23,24 +23,22 @@ public class BishopBlack implements Figure {
                     String.format("Could not move by diagonal from %s to %s", position, dest)
             );
         }
-        int size = Math.abs(position.getX() - dest.getX());
+        int size = Math.abs(position().getX() - dest.getX());
         Cell[] steps = new Cell[size];
-        int x = position.getX();
-        int y = position.getY();
+        int x = position().getX();
+        int y = position().getY();
         int deltaX = x - dest.getX() > 0 ? -1 : 1;
         int deltaY = y - dest.getY() > 0 ? -1 : 1;
         for (int index = 0; index < size; index++) {
-             x = x + deltaX;
-             y = y + deltaY;
+            x += deltaX;
+            y += deltaY;
             steps[index] = Cell.findBy(x, y);
         }
         return steps;
     }
 
     public boolean isDiagonal(Cell source, Cell dest) {
-        int x = Math.abs(source.getX() - dest.getX());
-        int y = Math.abs(source.getY() - dest.getY());
-        return x == y;
+        return Math.abs(source.getX() - dest.getX()) == Math.abs(source.getY() - dest.getY());
     }
 
     @Override
